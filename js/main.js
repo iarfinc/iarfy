@@ -161,23 +161,52 @@
     const out = type.querySelector('.typed');
     const text = type.dataset.text;
     const pencil = document.querySelector('.pencil');
+    // pecah teks pensil menjadi huruf (tetap mempertahankan <sup> dan .pf)
+    const pencilChars = [];
+    if (pencil) {
+      const split = node => {
+        [...node.childNodes].forEach(c => {
+          if (c.nodeType === 3) {
+            const frag = document.createDocumentFragment();
+            [...c.textContent].forEach(ch => {
+              const s = document.createElement('span');
+              s.className = 'ch';
+              s.textContent = ch;
+              s.style.setProperty('--o', (0.82 + Math.random() * 0.18).toFixed(2)); // tekanan pensil bervariasi
+              frag.append(s);
+              pencilChars.push(s);
+            });
+            c.replaceWith(frag);
+          } else split(c);
+        });
+      };
+      split(pencil.querySelector('.pencil-text'));
+    }
     const writePencil = () => {
       if (!pencil) return;
-      const txt = pencil.querySelector('.pencil-text');
+      if (reduce) { pencilChars.forEach(c => (c.style.opacity = c.style.getPropertyValue('--o'))); return; }
       const tool = pencil.querySelector('.pencil-tool');
-      if (reduce) { txt.style.clipPath = 'none'; return; }
-      // ditulis huruf demi huruf; pensil mengikuti ujung tulisan
-      const steps = txt.textContent.length, dur = 2600;
+      const base = pencil.getBoundingClientRect();
+      const n = pencilChars.length, per = 85, fade = 380;
+      const total = n * per + fade;
       let start;
+      tool.style.opacity = 1;
       const frame = now => {
         start ??= now;
-        const p = Math.min(1, (now - start) / dur);
-        const k = Math.floor(p * steps) / steps;
-        txt.style.clipPath = `inset(-20% ${100 - k * 102}% -30% 0)`;
-        tool.style.left = `${k * 100}%`;
-        tool.style.opacity = 1;
-        if (p < 1) requestAnimationFrame(frame);
-        else setTimeout(() => tool.classList.add('lift'), 250);
+        const t = now - start;
+        // tiap huruf: mulai samar & kabur, lalu menebal (progressive)
+        pencilChars.forEach((c, i) => {
+          const k = Math.min(1, Math.max(0, (t - i * per) / fade));
+          if (k === 0 || c.dataset.done) return;
+          const e = 1 - Math.pow(1 - k, 3);
+          c.style.opacity = (e * +c.style.getPropertyValue('--o')).toFixed(3);
+          c.style.filter = k < 1 ? `blur(${((1 - e) * 1.6).toFixed(2)}px)` : '';
+          if (k === 1) c.dataset.done = '1';
+        });
+        const cur = pencilChars[Math.min(n - 1, Math.floor(t / per))].getBoundingClientRect();
+        tool.style.left = `${cur.right - base.left}px`;
+        if (t < total) requestAnimationFrame(frame);
+        else setTimeout(() => tool.classList.add('lift'), 200);
       };
       requestAnimationFrame(frame);
     };
