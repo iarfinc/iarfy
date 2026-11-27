@@ -199,7 +199,7 @@ body.home {
 .pencil { position: relative; display: inline-block; margin: 10px 0 0; transform: rotate(-1.5deg); }
 .pencil-text {
   display: inline-block; padding: 0 .15em;
-  font: 600 clamp(17px, 3.4vw, 42px)/1.25 var(--script); letter-spacing: .01em; white-space: nowrap;
+  font: 600 clamp(15px, 2vw, 24px)/1.25 var(--script); letter-spacing: .01em; white-space: nowrap;
   color: #43464e;               /* grafit 2B */
   transform: skewX(-10deg);      /* miring seperti tulisan tangan italic */
   filter: url(#graphite);
@@ -209,14 +209,6 @@ body.home {
 /* progressive: tiap huruf muncul samar lalu menebal seperti goresan pensil */
 .js .pencil-text .ch { opacity: 0; }
 
-/* pensil yang bergerak mengikuti tulisan */
-.pencil-tool {
-  position: absolute; left: 0; bottom: 30%; width: 70px; height: 9px; opacity: 0; pointer-events: none;
-  transform-origin: 0 50%; transform: rotate(-32deg);
-  background: linear-gradient(90deg, #3a3a40 0 6%, #e9c79a 6% 22%, var(--yellow) 22% 88%, #c9c9cf 88% 94%, #e58fa0 94%);
-  clip-path: polygon(0 50%, 22% 0, 100% 0, 100% 100%, 22% 100%);
-}
-.pencil-tool.lift { transition: opacity .4s, transform .4s; opacity: 0 !important; transform: rotate(-32deg) translate(20px, -20px); }
 
 /* footer */
 .foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; padding: 24px 0 40px; font-size: 13px; color: var(--muted); }
@@ -365,7 +357,6 @@ html.dark body.journal {
   .js .words .w { color: var(--ink); }
   .js .write { clip-path: none; }
   .js .pencil-text .ch { opacity: .9; filter: none; }
-  .pencil-tool { display: none; }
   .js .brace { clip-path: none; }
 }
 

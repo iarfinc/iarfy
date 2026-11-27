@@ -185,12 +185,9 @@
     const writePencil = () => {
       if (!pencil) return;
       if (reduce) { pencilChars.forEach(c => (c.style.opacity = c.style.getPropertyValue('--o'))); return; }
-      const tool = pencil.querySelector('.pencil-tool');
-      const base = pencil.getBoundingClientRect();
-      const n = pencilChars.length, per = 85, fade = 380;
+      const n = pencilChars.length, per = 60, fade = 380;
       const total = n * per + fade;
       let start;
-      tool.style.opacity = 1;
       const frame = now => {
         start ??= now;
         const t = now - start;
@@ -203,10 +200,7 @@
           c.style.filter = k < 1 ? `blur(${((1 - e) * 1.6).toFixed(2)}px)` : '';
           if (k === 1) c.dataset.done = '1';
         });
-        const cur = pencilChars[Math.min(n - 1, Math.floor(t / per))].getBoundingClientRect();
-        tool.style.left = `${cur.right - base.left}px`;
         if (t < total) requestAnimationFrame(frame);
-        else setTimeout(() => tool.classList.add('lift'), 200);
       };
       requestAnimationFrame(frame);
     };
