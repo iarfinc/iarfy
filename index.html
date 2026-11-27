@@ -3,273 +3,133 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Iqbal Akbar Ridha Febriansyah — Web Developer</title>
-  <meta name="description" content="Portfolio Iqbal Akbar Ridha Febriansyah (IARF): web developer, pembangun LMS Pamjaya dan AI Proctoring API.">
-  <meta name="theme-color" content="#f3ede2">
+  <title>IARF — Iqbal Akbar Ridha Febriansyah</title>
+  <meta name="description" content="Iqbal Akbar Ridha Febriansyah (IARF), programmer dan web developer.">
+  <meta name="theme-color" content="#fbfaf7">
   <link rel="icon" href="images/code-16.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script>document.documentElement.classList.replace("no-js","js")</script>
 </head>
-<body>
+<body class="home">
 
-  <!-- flowing background -->
-  <div class="flow-bg" aria-hidden="true">
-    <span class="blob b1"></span>
-    <span class="blob b2"></span>
-    <span class="blob b3"></span>
-  </div>
-  <svg class="grain" aria-hidden="true"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+  <!-- simbol & huruf melayang di latar -->
+  <div class="drift" aria-hidden="true"></div>
 
-  <header class="nav" id="nav">
-    <a href="#top" class="logo">iarf<span>.</span></a>
-    <button class="nav-toggle" aria-label="Buka menu" aria-expanded="false" aria-controls="menu">
-      <span></span><span></span>
-    </button>
-    <nav id="menu">
-      <a href="#tentang">Tentang</a>
-      <a href="#karya">Karya</a>
-      <a href="#arsip">Arsip</a>
-      <a href="#keahlian">Keahlian</a>
-      <a href="#kontak" class="nav-cta">Kontak</a>
+  <header class="topbar wrap">
+    <a href="./" class="brand">
+      <span class="brand-tile"><svg viewBox="0 0 32 32"><path d="M21 8H11l6 8-6 8h10"/></svg></span>
+      iarf
+    </a>
+    <nav class="toplinks">
+      <a href="jurnal.html">Log Jurnal</a>
+      <a href="#kontak">Kontak</a>
     </nav>
   </header>
 
-  <main id="top">
-
+  <main>
     <!-- HERO -->
-    <section class="hero">
-      <svg class="flow-lines" viewBox="0 0 1440 800" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M-50 620 C 240 480, 420 760, 720 560 S 1180 300, 1500 420"/>
-        <path d="M-50 660 C 260 540, 440 800, 740 610 S 1200 360, 1500 480"/>
-        <path d="M-50 700 C 280 600, 460 840, 760 660 S 1220 420, 1500 540"/>
-        <path d="M-50 740 C 300 660, 480 880, 780 710 S 1240 480, 1500 600"/>
-      </svg>
-
-      <div class="hero-inner">
-        <p class="eyebrow reveal">Portfolio · 2026</p>
-        <h1 class="hero-title">
-          <span class="line reveal">Kode yang</span>
-          <span class="line reveal"><em>mengalir</em>,</span>
-          <span class="line reveal">sistem yang <span class="ink-grad">hidup</span>.</span>
-        </h1>
-        <div class="hero-foot reveal">
-          <p>Saya <strong>Iqbal Akbar Ridha Febriansyah</strong>, programmer &amp; web developer dari Bandung. Saya membangun platform belajar, layanan AI, dan aplikasi web dari rancangan arsitektur sampai deployment.</p>
-          <a href="#karya" class="btn">Lihat karya <span aria-hidden="true">↓</span></a>
-        </div>
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <h1 class="reveal">Pemburu pola, perakit sistem &amp; pelajar seumur hidup</h1>
+        <a href="#mulai" class="pill reveal">Lihat</a>
       </div>
-
-      <figure class="hero-portrait reveal" aria-hidden="true">
-        <div class="morph"><img src="images/me.jpg" alt=""></div>
-      </figure>
-    </section>
-
-    <!-- MARQUEE -->
-    <div class="marquee" aria-hidden="true">
-      <div class="track">
-        <span>Moodle LMS</span><i>✺</i><span>FastAPI</span><i>✺</i><span>Computer Vision</span><i>✺</i><span>PHP</span><i>✺</i><span>Python</span><i>✺</i><span>JavaScript</span><i>✺</i><span>Docker</span><i>✺</i><span>UI Design</span><i>✺</i>
-        <span>Moodle LMS</span><i>✺</i><span>FastAPI</span><i>✺</i><span>Computer Vision</span><i>✺</i><span>PHP</span><i>✺</i><span>Python</span><i>✺</i><span>JavaScript</span><i>✺</i><span>Docker</span><i>✺</i><span>UI Design</span><i>✺</i>
-      </div>
-    </div>
-
-    <!-- TENTANG -->
-    <section class="section about" id="tentang">
-      <div class="sec-head reveal">
-        <span class="sec-num">01</span>
-        <h2>Tentang</h2>
-      </div>
-      <div class="about-grid">
-        <p class="lead reveal">Saya senang mempelajari hal baru, dan paling menikmati pekerjaan di titik temu antara <em>desain</em>, <em>backend</em>, dan <em>orang yang memakainya</em>.</p>
-        <div class="services">
-          <article class="service reveal">
-            <span class="svc-ico">✦</span>
-            <h3>Web Development</h3>
-            <p>Aplikasi web menyeluruh: arsitektur, implementasi, integrasi, hingga deployment.</p>
-          </article>
-          <article class="service reveal">
-            <span class="svc-ico">◐</span>
-            <h3>Desain</h3>
-            <p>Grafis dan antarmuka yang kreatif: banner, produk, sampai kebutuhan konten.</p>
-          </article>
-          <article class="service reveal">
-            <span class="svc-ico">❋</span>
-            <h3>Support</h3>
-            <p>Dukungan teknis dan pemecahan masalah agar sistem tetap jalan dan pengguna puas.</p>
-          </article>
-        </div>
+      <div class="hero-tile reveal" aria-hidden="true">
+        <svg viewBox="0 0 256 256">
+          <path class="sigma" d="M168 66H84l52 62-52 62h84"/>
+          <rect class="cursor" x="178" y="172" width="48" height="18" rx="9"/>
+        </svg>
       </div>
     </section>
 
-    <!-- KARYA UNGGULAN -->
-    <section class="section work" id="karya">
-      <div class="sec-head reveal">
-        <span class="sec-num">02</span>
-        <h2>Karya unggulan</h2>
-      </div>
-
-      <!-- LMS Pamjaya -->
-      <article class="feature reveal">
-        <div class="feature-visual v-lms">
-          <div class="browser">
-            <div class="browser-bar"><i></i><i></i><i></i><span>pamjaya.diconic.co.id</span></div>
-            <div class="browser-body">
-              <div class="lms-hero"><b>LMS Pamjaya</b><small>Belajar, tumbuh, melayani.</small></div>
-              <div class="lms-cards">
-                <div class="lms-card"><span></span><b>IT Awareness</b></div>
-                <div class="lms-card"><span></span><b>Microsoft Office</b></div>
-                <div class="lms-card"><span></span><b>Panduan K3</b></div>
-                <div class="lms-card"><span></span><b>Human Capital</b></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="feature-text">
-          <p class="tag">Learning Management System · Dibangun oleh saya</p>
-          <h3>LMS Pamjaya</h3>
-          <p>Portal pembelajaran digital untuk pegawai PAM JAYA. Pegawai mengikuti pelatihan online dan mengakses materi untuk meningkatkan kompetensi, dari web maupun aplikasi Android dan iOS.</p>
-          <ul class="points">
-            <li>Katalog kursus dengan pengajar, jumlah peserta, dan jadwal mulai</li>
-            <li>Knowledge Center, Tours 360, dan dashboard akses cepat</li>
-            <li>Dwibahasa: Bahasa Indonesia &amp; English</li>
-            <li>Kustomisasi tema, slider, dan plugin lokal di atas Moodle</li>
-          </ul>
-          <div class="chips"><span>Moodle</span><span>PHP</span><span>Tema mb2nl</span><span>Plugin lokal</span></div>
-          <a class="link" href="https://pamjaya.diconic.co.id/" target="_blank" rel="noopener">Kunjungi situs <span aria-hidden="true">↗</span></a>
-        </div>
-      </article>
-
-      <!-- Proctoring API -->
-      <article class="feature flip reveal">
-        <div class="feature-visual v-api">
-          <div class="scan">
-            <div class="face">
-              <svg viewBox="0 0 200 200" aria-hidden="true">
-                <ellipse cx="100" cy="96" rx="54" ry="68"/>
-                <circle cx="80" cy="86" r="4"/><circle cx="120" cy="86" r="4"/>
-                <path d="M84 128 Q100 138 116 128"/>
-                <g class="mesh">
-                  <path d="M60 70 L100 52 L140 70 L148 110 L128 150 L100 162 L72 150 L52 110 Z"/>
-                  <path d="M60 70 L80 86 L100 52 L120 86 L140 70 M80 86 L100 110 L120 86 M52 110 L100 110 L148 110 M72 150 L100 110 L128 150"/>
-                </g>
-              </svg>
-              <span class="scanline"></span>
-            </div>
-            <pre class="json"><code>POST /analyze-frame
-{
-  <k>"faces_detected"</k>: <n>1</n>,
-  <k>"violation"</k>: <b>true</b>,
-  <k>"violation_type"</k>: <s>"looking_away"</s>,
-  <k>"confidence_score"</k>: <n>97.4</n>
-}</code></pre>
-          </div>
-        </div>
-        <div class="feature-text">
-          <p class="tag">AI Service · Open source</p>
-          <h3>AI Proctoring API</h3>
-          <p>Layanan pengawasan ujian online yang membaca frame webcam peserta dan menandai pelanggaran secara real-time. Disertai plugin Moodle Quiz Access (<code>quizaccess_proctoring</code>) agar langsung terpasang di LMS.</p>
-          <ul class="points">
-            <li>Deteksi tanpa wajah &amp; lebih dari satu wajah</li>
-            <li>Verifikasi identitas dengan DeepFace (Facenet) untuk mencegah joki</li>
-            <li>Anti-spoofing: foto, layar ponsel, atau topeng</li>
-            <li>Deteksi menoleh &amp; berbicara lewat landmark MediaPipe FaceMesh</li>
-            <li>Siap Docker / Docker Compose, image di GHCR</li>
-          </ul>
-          <div class="chips"><span>Python</span><span>FastAPI</span><span>MediaPipe</span><span>DeepFace</span><span>Docker</span><span>Moodle plugin</span></div>
-          <a class="link" href="https://github.com/FrostLynn/proctoring-api" target="_blank" rel="noopener">Lihat di GitHub <span aria-hidden="true">↗</span></a>
-        </div>
-      </article>
+    <!-- PERNYATAAN: kata menyala bertahap saat di-scroll -->
+    <section class="statement wrap" aria-label="Bidang minat">
+      <p class="words">Web + Pemrograman + AI + Desain + Matematika + Sains + Data = <em>iarf</em></p>
     </section>
 
-    <!-- ARSIP / PROYEK LAIN -->
-    <section class="section archive" id="arsip">
-      <div class="sec-head reveal">
-        <span class="sec-num">03</span>
-        <h2>Proyek lainnya</h2>
-      </div>
-
-      <div class="filters reveal" role="tablist" aria-label="Filter proyek">
-        <button class="active" data-filter="all">Semua</button>
-        <button data-filter="spam">Spaminator</button>
-        <button data-filter="freelance">SI Freelance</button>
-        <button data-filter="sekolah">Profil Sekolah</button>
-        <button data-filter="pet">Layanan Hewan</button>
-      </div>
-
-      <div class="gallery">
-        <figure class="g-item tall" data-cat="spam"><img loading="lazy" src="images/App.png" alt="Spaminator di store"><figcaption><b>Spaminator: AI Spam Hider</b>Publikasi store</figcaption></figure>
-        <figure class="g-item" data-cat="spam"><img loading="lazy" src="images/Before.png" alt="Spaminator sebelum aktif"><figcaption><b>Spaminator: AI Spam Hider</b>Sebelum aktif</figcaption></figure>
-        <figure class="g-item" data-cat="spam"><img loading="lazy" src="images/After.png" alt="Spaminator setelah aktif"><figcaption><b>Spaminator: AI Spam Hider</b>Setelah aktif</figcaption></figure>
-        <figure class="g-item" data-cat="spam"><img loading="lazy" src="images/UI.png" alt="Antarmuka ekstensi Spaminator"><figcaption><b>Spaminator: AI Spam Hider</b>Antarmuka ekstensi</figcaption></figure>
-
-        <figure class="g-item wide" data-cat="freelance"><img loading="lazy" src="images/6.png" alt="Dashboard admin SI Freelance"><figcaption><b>Sistem Informasi Freelance</b>Dashboard admin</figcaption></figure>
-        <figure class="g-item" data-cat="freelance"><img loading="lazy" src="images/5.png" alt="Halaman login SI Freelance"><figcaption><b>Sistem Informasi Freelance</b>Halaman login</figcaption></figure>
-        <figure class="g-item" data-cat="freelance"><img loading="lazy" src="images/7.png" alt="Data kandidat SI Freelance"><figcaption><b>Sistem Informasi Freelance</b>Data kandidat</figcaption></figure>
-        <figure class="g-item" data-cat="freelance"><img loading="lazy" src="images/8.png" alt="Panel admin SI Freelance"><figcaption><b>Sistem Informasi Freelance</b>Panel admin</figcaption></figure>
-
-        <figure class="g-item wide" data-cat="sekolah"><img loading="lazy" src="images/9.png" alt="Halaman utama profil sekolah"><figcaption><b>Profil Sekolah</b>Halaman utama</figcaption></figure>
-        <figure class="g-item" data-cat="sekolah"><img loading="lazy" src="images/10.png" alt="Halaman pembiasaan profil sekolah"><figcaption><b>Profil Sekolah</b>Halaman pembiasaan</figcaption></figure>
-        <figure class="g-item" data-cat="sekolah"><img loading="lazy" src="images/11.png" alt="Halaman kegiatan profil sekolah"><figcaption><b>Profil Sekolah</b>Halaman kegiatan</figcaption></figure>
-        <figure class="g-item" data-cat="sekolah"><img loading="lazy" src="images/Guru.png" alt="Halaman guru profil sekolah"><figcaption><b>Profil Sekolah</b>Halaman guru</figcaption></figure>
-
-        <figure class="g-item wide" data-cat="pet"><img loading="lazy" src="images/14.png" alt="Dashboard layanan hewan peliharaan"><figcaption><b>Layanan Hewan Peliharaan</b>Dashboard utama</figcaption></figure>
-        <figure class="g-item" data-cat="pet"><img loading="lazy" src="images/13.png" alt="Login layanan hewan peliharaan"><figcaption><b>Layanan Hewan Peliharaan</b>Halaman login</figcaption></figure>
-        <figure class="g-item" data-cat="pet"><img loading="lazy" src="images/15.png" alt="Live chat layanan hewan peliharaan"><figcaption><b>Layanan Hewan Peliharaan</b>Fitur live chat</figcaption></figure>
-        <figure class="g-item" data-cat="pet"><img loading="lazy" src="images/16.png" alt="Halaman dokter layanan hewan peliharaan"><figcaption><b>Layanan Hewan Peliharaan</b>Halaman dokter</figcaption></figure>
+    <!-- MULAI DI SINI -->
+    <section class="start wrap" id="mulai">
+      <p class="kicker reveal">Mulai di sini <span class="eqk">// x ∈ {x₁, …, xₙ}</span></p>
+      <div class="cards">
+        <a class="card reveal accent-y" href="#" aria-disabled="true">
+          <span class="card-path">x₁ · definisi</span>
+          <span class="card-title">Profil</span>
+          <svg class="card-ico y" viewBox="0 0 48 48"><circle cx="24" cy="16" r="8"/><path d="M8 42c2-9 8-13 16-13s14 4 16 13"/><path class="b" d="M18 38h12"/></svg>
+          <span class="card-soon">segera</span>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card reveal accent-b" href="jurnal.html">
+          <span class="card-path">x₂ · catatan</span>
+          <span class="card-title">Log Jurnal</span>
+          <svg class="card-ico b" viewBox="0 0 48 48"><rect x="10" y="6" width="28" height="36" rx="4"/><path d="M16 16h16M16 23h16M16 30h10"/><path class="y" d="M30 4v10l3-2 3 2V4"/></svg>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card reveal accent-y" href="#" aria-disabled="true">
+          <span class="card-path">x₃ ∈ K · karya</span>
+          <span class="card-title">Proyek</span>
+          <svg class="card-ico y" viewBox="0 0 48 48"><path d="M16 12C10 12 12 22 6 24c6 2 4 12 10 12"/><path d="M32 12c6 0 4 10 10 12-6 2-4 12-10 12"/><path class="b" d="M20 30l8-12"/></svg>
+          <span class="card-soon">segera</span>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card reveal accent-b" href="#" aria-disabled="true">
+          <span class="card-path">x₄ · variabel</span>
+          <span class="card-title">Keahlian</span>
+          <svg class="card-ico b" viewBox="0 0 48 48"><path d="M6 40h36M10 40V8"/><path class="y" d="M10 34c8 0 10-18 16-18s8 10 16 4"/><circle cx="26" cy="16" r="2.5"/></svg>
+          <span class="card-soon">segera</span>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card reveal accent-y" href="#" aria-disabled="true">
+          <span class="card-path">x₅ · eksperimen</span>
+          <span class="card-title">Lab</span>
+          <svg class="card-ico y" viewBox="0 0 48 48"><path d="M19 6h10M21 6v12L10 38a3 3 0 0 0 3 4h22a3 3 0 0 0 3-4L27 18V6"/><path class="b" d="M14 31h20"/></svg>
+          <span class="card-soon">segera</span>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card reveal accent-b" href="#kontak">
+          <span class="card-path">xₙ · q.e.d. ∎</span>
+          <span class="card-title">Kontak</span>
+          <svg class="card-ico b" viewBox="0 0 48 48"><path d="M6 10h28v18H18l-8 6v-6H6z"/><path class="y" d="M38 18h4v16h-4v6l-7-6H22v-3"/></svg>
+          <span class="card-arrow">→</span>
+        </a>
       </div>
     </section>
 
-    <!-- KEAHLIAN -->
-    <section class="section skills" id="keahlian">
-      <div class="sec-head reveal">
-        <span class="sec-num">04</span>
-        <h2>Keahlian</h2>
-      </div>
-      <div class="skill-grid">
-        <div class="skill-bars">
-          <div class="skill reveal" style="--v:80"><div class="skill-top"><span>PHP</span><span>80%</span></div><div class="bar"><i></i></div></div>
-          <div class="skill reveal" style="--v:80"><div class="skill-top"><span>Python</span><span>80%</span></div><div class="bar"><i></i></div></div>
-          <div class="skill reveal" style="--v:75"><div class="skill-top"><span>JavaScript</span><span>75%</span></div><div class="bar"><i></i></div></div>
+    <!-- DIBANGUN DENGAN -->
+    <section class="stack wrap">
+      <p class="kicker reveal">Variabel &amp; konstanta <span class="eqk">// x ∈ [0, 1]</span></p>
+      <div class="stack-row reveal">
+        <span class="stack-label">Bahasa</span>
+        <div class="chips">
+          <span class="chip"><i class="sym">∑</i>PHP</span>
+          <span class="chip"><i class="sym">λ</i>Python</span>
+          <span class="chip"><i class="sym">∂</i>JavaScript</span>
+          <span class="chip"><i class="sym">√</i>HTML &amp; CSS</span>
         </div>
-        <div class="toolset reveal">
-          <h3>Alat sehari-hari</h3>
-          <div class="chips big">
-            <span>Moodle</span><span>FastAPI</span><span>Docker</span><span>MediaPipe</span><span>DeepFace</span><span>Git &amp; GitHub</span><span>Browser Extension</span><span>HTML &amp; CSS</span>
-          </div>
+      </div>
+      <div class="stack-row reveal">
+        <span class="stack-label">Alat</span>
+        <div class="chips">
+          <span class="chip ghost">— segera diisi —</span>
         </div>
       </div>
     </section>
 
-    <!-- KONTAK -->
-    <section class="section contact" id="kontak">
-      <svg class="flow-lines alt" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M-50 300 C 300 120, 600 380, 900 200 S 1300 60, 1500 160"/>
-        <path d="M-50 340 C 320 170, 620 420, 920 250 S 1320 110, 1500 210"/>
-      </svg>
-      <p class="eyebrow reveal">Punya ide atau proyek?</p>
-      <h2 class="contact-title reveal">Mari <em>berkolaborasi</em>.</h2>
-      <a class="mail reveal" href="mailto:iarf.edu@gmail.com">iarf.edu@gmail.com</a>
-      <div class="socials reveal">
-        <a href="https://github.com/iarfinc" target="_blank" rel="noopener">GitHub ↗</a>
-        <a href="https://github.com/FrostLynn" target="_blank" rel="noopener">FrostLynn ↗</a>
-        <a href="https://instagram.com/iarf__/" target="_blank" rel="noopener">Instagram ↗</a>
-      </div>
+    <!-- NAMA BESAR -->
+    <section class="bigname wrap" aria-label="Iqbal Akbar Ridha Febriansyah">
+      <p class="type" data-text="iqbal akbar"><span class="prompt">f(x) =</span><span class="typed"></span><span class="caret"></span></p>
     </section>
   </main>
 
-  <footer class="footer">
-    <span>© <span id="year">2026</span> IARF</span>
-    <span>Bandung, Indonesia</span>
-    <a href="#top">Kembali ke atas ↑</a>
+  <footer class="foot wrap" id="kontak">
+    <span class="foot-brand"><span class="brand-tile sm"><svg viewBox="0 0 32 32"><path d="M21 8H11l6 8-6 8h10"/></svg></span>© <span class="year">2026</span> iarf</span>
+    <div class="foot-links">
+      <a class="chip" href="mailto:iarf.edu@gmail.com">✉ iarf.edu@gmail.com</a>
+      <a class="chip" href="https://github.com/iarfinc" target="_blank" rel="noopener">GitHub</a>
+      <a class="chip" href="https://instagram.com/iarf__/" target="_blank" rel="noopener">Instagram</a>
+    </div>
   </footer>
-
-  <!-- lightbox -->
-  <dialog class="lightbox" id="lightbox">
-    <button class="lb-close" aria-label="Tutup">×</button>
-    <img src="" alt="">
-    <p></p>
-  </dialog>
 
   <script src="js/main.js"></script>
 </body>
