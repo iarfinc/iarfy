@@ -155,65 +155,49 @@
     }
   }
 
-  // nama diketik saat terlihat, lalu nama lengkap ditulis dengan pensil
+  // nama: ketik "iqbal arfy", klik untuk menjabarkan jadi nama lengkap (dan sebaliknya)
   const type = document.querySelector('.type');
   if (type) {
     const out = type.querySelector('.typed');
-    const text = type.dataset.text;
-    const pencil = document.querySelector('.pencil');
-    // pecah teks pensil menjadi huruf (tetap mempertahankan <sup> dan .pf)
-    const pencilChars = [];
-    if (pencil) {
-      const split = node => {
-        [...node.childNodes].forEach(c => {
-          if (c.nodeType === 3) {
-            const frag = document.createDocumentFragment();
-            [...c.textContent].forEach(ch => {
-              const s = document.createElement('span');
-              s.className = 'ch';
-              s.textContent = ch;
-              s.style.setProperty('--o', (0.82 + Math.random() * 0.18).toFixed(2)); // tekanan pensil bervariasi
-              frag.append(s);
-              pencilChars.push(s);
-            });
-            c.replaceWith(frag);
-          } else split(c);
-        });
-      };
-      split(pencil.querySelector('.pencil-text'));
-    }
-    const writePencil = () => {
-      if (!pencil) return;
-      if (reduce) { pencilChars.forEach(c => (c.style.opacity = c.style.getPropertyValue('--o'))); return; }
-      const n = pencilChars.length, per = 60, fade = 380;
-      const total = n * per + fade;
-      let start;
-      const frame = now => {
-        start ??= now;
-        const t = now - start;
-        // tiap huruf: mulai samar & kabur, lalu menebal (progressive)
-        pencilChars.forEach((c, i) => {
-          const k = Math.min(1, Math.max(0, (t - i * per) / fade));
-          if (k === 0 || c.dataset.done) return;
-          const e = 1 - Math.pow(1 - k, 3);
-          c.style.opacity = (e * +c.style.getPropertyValue('--o')).toFixed(3);
-          c.style.filter = k < 1 ? `blur(${((1 - e) * 1.6).toFixed(2)}px)` : '';
-          if (k === 1) c.dataset.done = '1';
-        });
-        if (t < total) requestAnimationFrame(frame);
-      };
-      requestAnimationFrame(frame);
+    const rel = type.querySelector('.rel');
+    const hint = document.querySelector('.type-hint');
+    const SHORT = type.dataset.short, LONG = type.dataset.long;
+    let timer = null, expanded = false, ready = false;
+
+    // hapus sampai awalan yang sama, lalu ketik sisanya
+    const morph = (to, done) => {
+      clearInterval(timer);
+      let cur = out.textContent;
+      let p = 0;
+      while (p < cur.length && p < to.length && cur[p] === to[p]) p++;
+      let deleting = cur.length > p;
+      timer = setInterval(() => {
+        if (deleting && cur.length > p) cur = cur.slice(0, -1);
+        else if (cur.length < to.length) { deleting = false; cur = to.slice(0, cur.length + 1); }
+        else { clearInterval(timer); done && done(); return; }
+        out.textContent = cur;
+      }, 55);
     };
-    if (reduce) { out.textContent = text; writePencil(); }
+
+    const toggle = () => {
+      if (!ready) return;
+      expanded = !expanded;
+      type.classList.toggle('expanded', expanded);
+      type.setAttribute('aria-pressed', expanded);
+      rel.textContent = expanded ? '≡' : '=';
+      hint.textContent = expanded ? '// klik untuk menyederhanakan' : '// klik untuk menjabarkan';
+      if (reduce) out.textContent = expanded ? LONG : SHORT;
+      else morph(expanded ? LONG : SHORT);
+    };
+    type.addEventListener('click', toggle);
+
+    const start = () => { ready = true; hint.classList.add('on'); };
+    if (reduce) { out.textContent = SHORT; start(); }
     else {
       const io = new IntersectionObserver(([e]) => {
         if (!e.isIntersecting) return;
         io.disconnect();
-        let i = 0;
-        const t = setInterval(() => {
-          out.textContent = text.slice(0, ++i);
-          if (i >= text.length) { clearInterval(t); setTimeout(writePencil, 350); }
-        }, 110);
+        morph(SHORT, () => setTimeout(start, 300));
       }, { threshold: 0.6 });
       io.observe(type);
     }
