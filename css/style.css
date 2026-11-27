@@ -343,3 +343,45 @@ html.dark body.journal {
   .js .write { clip-path: none; }
   .js .brace { clip-path: none; }
 }
+
+/* ==========================================================
+   TRANSISI HALAMAN: geser ke samping
+   maju (ke jurnal) = halaman baru masuk dari kanan
+   mundur (ke beranda) = halaman baru masuk dari kiri
+   ========================================================== */
+@view-transition { navigation: auto; }
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: .7s;
+  animation-timing-function: cubic-bezier(.76, 0, .24, 1);
+  animation-fill-mode: both;
+}
+::view-transition-new(root) { box-shadow: 0 0 80px rgba(22, 22, 28, .22); }
+
+/* tiba di jurnal */
+:root:has(body.journal)::view-transition-old(root) { animation-name: vt-out-left; }
+:root:has(body.journal)::view-transition-new(root) { animation-name: vt-in-right; }
+/* tiba di beranda */
+:root:has(body.home)::view-transition-old(root) { animation-name: vt-out-right; }
+:root:has(body.home)::view-transition-new(root) { animation-name: vt-in-left; }
+
+@keyframes vt-out-left  { to   { transform: translateX(-35%); opacity: .3; } }
+@keyframes vt-in-right  { from { transform: translateX(100%); } }
+@keyframes vt-out-right { to   { transform: translateX(35%); opacity: .3; } }
+@keyframes vt-in-left   { from { transform: translateX(-100%); } }
+
+/* fallback (browser tanpa View Transitions) */
+html.slide-out-left body  { animation: vt-out-left .45s cubic-bezier(.76, 0, .24, 1) forwards; }
+html.slide-out-right body { animation: vt-out-right .45s cubic-bezier(.76, 0, .24, 1) forwards; }
+html.slide-in-right body  { animation: vt-in-right .6s cubic-bezier(.22, 1, .36, 1) both; }
+html.slide-in-left body   { animation: vt-in-left .6s cubic-bezier(.22, 1, .36, 1) both; }
+html[class*="slide-"] { overflow-x: hidden; }
+
+/* baris "(segera)" yang belum tersedia: goyang kecil saat diklik */
+.eq-row.nope { animation: nope .4s; }
+@keyframes nope { 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}

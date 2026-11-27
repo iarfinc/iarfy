@@ -3,6 +3,39 @@
   const rand = (a, b) => a + Math.random() * (b - a);
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 
+  /* ---------- transisi halaman (fallback tanpa View Transitions) ---------- */
+  const isJournalPage = document.body.classList.contains('journal');
+  const arrive = sessionStorage.getItem('slide-in');
+  if (arrive) {
+    sessionStorage.removeItem('slide-in');
+    document.documentElement.classList.add(arrive);
+    setTimeout(() => document.documentElement.classList.remove(arrive), 700);
+  }
+  addEventListener('pageshow', e => {
+    if (e.persisted) document.documentElement.classList.remove('slide-out-left', 'slide-out-right');
+  });
+  if (!window.CSSViewTransitionRule && !reduce) {
+    document.addEventListener('click', e => {
+      const a = e.target.closest('a[href]');
+      if (!a || e.metaKey || e.ctrlKey || e.shiftKey || a.target === '_blank') return;
+      const url = new URL(a.href, location.href);
+      if (url.origin !== location.origin || url.pathname === location.pathname) return;
+      e.preventDefault();
+      const forward = !isJournalPage; // beranda -> jurnal = maju
+      document.documentElement.classList.add(forward ? 'slide-out-left' : 'slide-out-right');
+      sessionStorage.setItem('slide-in', forward ? 'slide-in-right' : 'slide-in-left');
+      setTimeout(() => (location.href = url.href), 420);
+    });
+  }
+
+  // baris yang belum tersedia: jangan lompat ke atas, beri goyangan kecil
+  document.querySelectorAll('.eq-row[aria-disabled="true"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      a.classList.remove('nope'); void a.offsetWidth; a.classList.add('nope');
+    });
+  });
+
   document.querySelectorAll('.year').forEach(y => (y.textContent = new Date().getFullYear()));
 
   /* ---------- reveal ---------- */
