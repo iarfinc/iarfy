@@ -58,7 +58,7 @@
     // ekspresi aljabar (serif miring) + huruf nama (mono), seperti coretan di papan
     const EXPR = ['x² + 2x + 1', '(a + b)²', 'ax + b = 0', '∑ xᵢ', '√x', 'f(x)', 'y = mx + c', 'A⁻¹', 'det(A)',
       'x ∈ ℝ', '∫ f dx', 'λ', 'π', '∞', 'Δx', 'n!', 'log₂ n', 'eⁱᵖ + 1 = 0', 'dy/dx', '∂f', 'θ', 'x̄', 'φ'];
-    const LETTERS = 'iqbalakbar'.split('');
+    const LETTERS = 'iqbalarfy'.split('');
     const items = [];
     const n = innerWidth < 700 ? 16 : 30;
     for (let i = 0; i < n; i++) {
@@ -155,12 +155,33 @@
     }
   }
 
-  // nama diketik saat terlihat
+  // nama diketik saat terlihat, lalu nama lengkap ditulis dengan pensil
   const type = document.querySelector('.type');
   if (type) {
     const out = type.querySelector('.typed');
     const text = type.dataset.text;
-    if (reduce) out.textContent = text;
+    const pencil = document.querySelector('.pencil');
+    const writePencil = () => {
+      if (!pencil) return;
+      const txt = pencil.querySelector('.pencil-text');
+      const tool = pencil.querySelector('.pencil-tool');
+      if (reduce) { txt.style.clipPath = 'none'; return; }
+      // ditulis huruf demi huruf; pensil mengikuti ujung tulisan
+      const steps = txt.textContent.length, dur = 2600;
+      let start;
+      const frame = now => {
+        start ??= now;
+        const p = Math.min(1, (now - start) / dur);
+        const k = Math.floor(p * steps) / steps;
+        txt.style.clipPath = `inset(-20% ${100 - k * 102}% -30% 0)`;
+        tool.style.left = `${k * 100}%`;
+        tool.style.opacity = 1;
+        if (p < 1) requestAnimationFrame(frame);
+        else setTimeout(() => tool.classList.add('lift'), 250);
+      };
+      requestAnimationFrame(frame);
+    };
+    if (reduce) { out.textContent = text; writePencil(); }
     else {
       const io = new IntersectionObserver(([e]) => {
         if (!e.isIntersecting) return;
@@ -168,7 +189,7 @@
         let i = 0;
         const t = setInterval(() => {
           out.textContent = text.slice(0, ++i);
-          if (i >= text.length) clearInterval(t);
+          if (i >= text.length) { clearInterval(t); setTimeout(writePencil, 350); }
         }, 110);
       }, { threshold: 0.6 });
       io.observe(type);
