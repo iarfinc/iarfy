@@ -155,49 +155,21 @@
     }
   }
 
-  // nama: ketik "iqbal arfy", klik untuk menjabarkan jadi nama lengkap (dan sebaliknya)
+  // nama diketik saat terlihat
   const type = document.querySelector('.type');
   if (type) {
     const out = type.querySelector('.typed');
-    const rel = type.querySelector('.rel');
-    const hint = document.querySelector('.type-hint');
-    const SHORT = type.dataset.short, LONG = type.dataset.long;
-    let timer = null, expanded = false, ready = false;
-
-    // hapus sampai awalan yang sama, lalu ketik sisanya
-    const morph = (to, done) => {
-      clearInterval(timer);
-      let cur = out.textContent;
-      let p = 0;
-      while (p < cur.length && p < to.length && cur[p] === to[p]) p++;
-      let deleting = cur.length > p;
-      timer = setInterval(() => {
-        if (deleting && cur.length > p) cur = cur.slice(0, -1);
-        else if (cur.length < to.length) { deleting = false; cur = to.slice(0, cur.length + 1); }
-        else { clearInterval(timer); done && done(); return; }
-        out.textContent = cur;
-      }, 55);
-    };
-
-    const toggle = () => {
-      if (!ready) return;
-      expanded = !expanded;
-      type.classList.toggle('expanded', expanded);
-      type.setAttribute('aria-pressed', expanded);
-      rel.textContent = expanded ? '≡' : '=';
-      hint.textContent = expanded ? '// klik untuk menyederhanakan' : '// klik untuk menjabarkan';
-      if (reduce) out.textContent = expanded ? LONG : SHORT;
-      else morph(expanded ? LONG : SHORT);
-    };
-    type.addEventListener('click', toggle);
-
-    const start = () => { ready = true; hint.classList.add('on'); };
-    if (reduce) { out.textContent = SHORT; start(); }
+    const text = type.dataset.text;
+    if (reduce) out.textContent = text;
     else {
       const io = new IntersectionObserver(([e]) => {
         if (!e.isIntersecting) return;
         io.disconnect();
-        morph(SHORT, () => setTimeout(start, 300));
+        let i = 0;
+        const t = setInterval(() => {
+          out.textContent = text.slice(0, ++i);
+          if (i >= text.length) clearInterval(t);
+        }, 80);
       }, { threshold: 0.6 });
       io.observe(type);
     }
