@@ -99,6 +99,29 @@
     else { addEventListener('scroll', lightUp, { passive: true }); lightUp(); }
   }
 
+  // sistem persamaan "ditulis" baris demi baris
+  const problem = document.querySelector('.problem');
+  if (problem) {
+    let t = 0;
+    problem.querySelectorAll('.write').forEach((w, i) => {
+      const n = Math.max(3, w.textContent.trim().length);
+      const dur = Math.min(1.1, n * 0.045);
+      w.style.setProperty('--n', n);
+      w.style.setProperty('--wd', `${dur}s`);
+      w.style.setProperty('--wdelay', `${t}s`);
+      // kalimat pertama selesai, lalu kurung kurawal digambar dulu
+      t += i === 0 ? dur + 0.9 : dur * 0.75;
+    });
+    problem.querySelector('.brace')?.style.setProperty('transition-delay', `${problem.querySelector('.write').style.getPropertyValue('--wd')}`);
+    if (reduce) problem.classList.add('go');
+    else {
+      const pio = new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) { problem.classList.add('go'); pio.disconnect(); }
+      }, { threshold: 0.35 });
+      pio.observe(problem);
+    }
+  }
+
   // nama diketik saat terlihat
   const type = document.querySelector('.type');
   if (type) {
