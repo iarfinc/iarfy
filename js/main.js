@@ -4,7 +4,7 @@
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 
   /* ---------- transisi halaman (fallback tanpa View Transitions) ---------- */
-  const isJournalPage = document.body.classList.contains('journal');
+  const isHomePage = document.body.classList.contains('home');
   const arrive = sessionStorage.getItem('slide-in');
   if (arrive) {
     sessionStorage.removeItem('slide-in');
@@ -21,7 +21,8 @@
       const url = new URL(a.href, location.href);
       if (url.origin !== location.origin || url.pathname === location.pathname) return;
       e.preventDefault();
-      const forward = !isJournalPage; // beranda -> jurnal = maju
+      const toHome = /\/(index\.html)?$/.test(url.pathname);
+      const forward = !toHome; // ke halaman lebih dalam = maju, ke beranda = mundur
       document.documentElement.classList.add(forward ? 'slide-out-left' : 'slide-out-right');
       sessionStorage.setItem('slide-in', forward ? 'slide-in-right' : 'slide-in-left');
       setTimeout(() => (location.href = url.href), 420);
@@ -35,6 +36,20 @@
       a.classList.remove('nope'); void a.offsetWidth; a.classList.add('nope');
     });
   });
+
+  // profil: tandai menu sesuai bagian yang sedang dibaca
+  const pnav = document.querySelectorAll('.pnav a');
+  if (pnav.length) {
+    const map = new Map([...pnav].map(a => [a.getAttribute('href').slice(1), a]));
+    const sio = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        pnav.forEach(a => a.classList.remove('on'));
+        map.get(e.target.id)?.classList.add('on');
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    map.forEach((_, id) => { const sec = document.getElementById(id); sec && sio.observe(sec); });
+  }
 
   document.querySelectorAll('.year').forEach(y => (y.textContent = new Date().getFullYear()));
 
