@@ -40,7 +40,7 @@
         <p class="aka reveal">a.k.a. <b>Iqbal Arfy</b> · <i>f</i>(iarf)</p>
         <p class="role reveal">Programmer · web developer · desain · support</p>
         <p class="quote reveal">“Self-proclaimed pattern hunter &amp; imagination solver”</p>
-        <p class="summary reveal">Programmer dan web developer yang senang mempelajari hal baru. Portofolionya mencakup aplikasi web dan aplikasi lainnya, dari platform pembelajaran hingga ekstensi browser.</p>
+        <p class="summary reveal">Programmer dan web developer yang senang mempelajari hal baru. Portofolionya mencakup aplikasi web dan aplikasi lainnya, dari platform pembelajaran dan layanan AI hingga ekstensi browser.</p>
         <p class="loc reveal"><span aria-hidden="true">⌖</span> Bandung, Indonesia</p>
         <div class="pcta reveal">
           <a href="#proyek" class="pbtn solid">Lihat proyek</a>
@@ -54,7 +54,7 @@
         <dl class="deflist">
           <div><dt>misalkan</dt><dd><i>I</i> = Iqbal Akbar Ridha Febriansyah</dd></div>
           <div><dt>pendekatan</dt><dd>pahami → rancang → bangun → uji</dd></div>
-          <div><dt>fokus</dt><dd>∈ { web, sistem, desain }</dd></div>
+          <div><dt>fokus</dt><dd>∈ { web, sistem, AI, desain }</dd></div>
           <div><dt>bahasa</dt><dd>{ PHP, Python, JavaScript }</dd></div>
           <div><dt>peran</dt><dd>developer ∪ desainer ∪ support</dd></div>
           <div><dt>lokasi</dt><dd>Bandung, ID</dd></div>
@@ -81,6 +81,7 @@
         <li class="reveal"><span class="seq-n">a<sub>2</sub></span><span class="seq-y ph-inline">20xx</span><p><b class="ph-inline">[ mulai belajar pemrograman ]</b> <span class="ph-inline">deskripsi singkat.</span></p></li>
         <li class="reveal"><span class="seq-n">a<sub>3</sub></span><span class="seq-y ph-inline">20xx</span><p><b>Spaminator: AI Spam Hider.</b> Ekstensi browser penyembunyi spam yang dipublikasikan ke store.</p></li>
         <li class="reveal"><span class="seq-n">a<sub>4</sub></span><span class="seq-y ph-inline">20xx</span><p><b>LMS Pamjaya.</b> Membangun platform pembelajaran digital untuk pegawai PAM JAYA.</p></li>
+        <li class="reveal"><span class="seq-n">a<sub>5</sub></span><span class="seq-y ph-inline">20xx</span><p><b>AI Proctoring API.</b> Layanan pengawasan ujian online berbasis computer vision, terintegrasi dengan Moodle.</p></li>
         <li class="reveal"><span class="seq-n">a<sub>n</sub></span><span class="seq-y">sekarang</span><p><b>Terus belajar.</b> <span class="ph-inline">[ apa yang sedang kamu pelajari ]</span></p></li>
       </ol>
 
@@ -137,6 +138,19 @@
 
       <article class="proj reveal">
         <header class="proj-head">
+          <h3>proctoring-api</h3>
+          <div class="proj-tags"><span>fastapi</span><span>computer-vision</span><span>docker</span></div>
+        </header>
+        <p class="proj-lead">Layanan AI untuk mengawasi ujian online secara real-time dari frame webcam peserta, lengkap dengan plugin Moodle Quiz Access agar langsung terpasang di LMS.</p>
+        <div class="pmh">
+          <div><p class="pmh-k">Masalah <span>· P</span></p><p>Ujian online rawan kecurangan: peserta tidak terlihat, ada orang lain, joki, atau memakai foto/layar untuk menipu kamera.</p></div>
+          <div><p class="pmh-k">Pendekatan <span>· f(P)</span></p><p>FastAPI + MediaPipe FaceMesh + DeepFace (Facenet): deteksi wajah &amp; multi-wajah, verifikasi identitas, anti-spoofing, deteksi menoleh &amp; berbicara, cek pencahayaan.</p></div>
+          <div><p class="pmh-k">Hasil <span>· f(P) = S</span></p><p>Satu endpoint <code>/analyze-frame</code> yang mengembalikan jenis pelanggaran, siap Docker &amp; terpasang di Moodle. <span class="ph-inline">[ dampak / pemakaian nyata ]</span></p></div>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <header class="proj-head">
           <h3>spaminator</h3>
           <div class="proj-tags"><span>extension</span><span>ai</span><span>javascript</span></div>
         </header>
@@ -148,11 +162,10 @@
         </div>
       </article>
 
-      <p class="plabel reveal">Lainnya <span class="muted">// K \ {k₁, k₂}</span></p>
+      <p class="plabel reveal">Lainnya <span class="muted">// K \ {k₁, k₂, k₃}</span></p>
       <dl class="others reveal">
-        <div><dt>si-freelance</dt><dd>Sistem informasi freelance: login, dashboard admin, data kandidat.</dd></div>
-        <div><dt>profil-sekolah</dt><dd>Website profil sekolah: halaman utama, pembiasaan, kegiatan, guru.</dd></div>
-        <div><dt>layanan-hewan</dt><dd>Layanan hewan peliharaan: dashboard, live chat, halaman dokter.</dd></div>
+        <div><dt class="ph-inline">[ nama-proyek ]</dt><dd class="ph">[ deskripsi singkat proyek terbaru lainnya ]</dd></div>
+        <div><dt class="ph-inline">[ nama-proyek ]</dt><dd class="ph">[ deskripsi singkat proyek terbaru lainnya ]</dd></div>
       </dl>
     </section>
 
@@ -183,16 +196,19 @@
         <div class="sk-group reveal">
           <p class="sk-title">Web</p>
           <div class="sk"><span>HTML &amp; CSS</span><span class="sk-note">semua proyek web</span></div>
-          <div class="sk"><span>Moodle</span><span class="sk-note">LMS Pamjaya</span></div>
+          <div class="sk"><span>Moodle</span><span class="sk-note">LMS Pamjaya · plugin proctoring</span></div>
           <div class="sk"><span>Browser extension</span><span class="sk-note">Spaminator</span></div>
         </div>
         <div class="sk-group reveal">
-          <p class="sk-title">Desain</p>
-          <div class="sk"><span>Grafis &amp; konten</span><span class="sk-note">banner, produk</span></div>
-          <div class="sk"><span>Antarmuka</span><span class="sk-note">UI web</span></div>
+          <p class="sk-title">AI &amp; infra</p>
+          <div class="sk"><span>FastAPI</span><span class="sk-note">Proctoring API</span></div>
+          <div class="sk"><span>MediaPipe &amp; DeepFace</span><span class="sk-note">computer vision</span></div>
+          <div class="sk"><span>Docker</span><span class="sk-note">deployment layanan</span></div>
         </div>
         <div class="sk-group reveal">
-          <p class="sk-title">Support</p>
+          <p class="sk-title">Desain &amp; support</p>
+          <div class="sk"><span>Grafis &amp; konten</span><span class="sk-note">banner, produk</span></div>
+          <div class="sk"><span>Antarmuka</span><span class="sk-note">UI web</span></div>
           <div class="sk"><span>Dukungan teknis</span><span class="sk-note">operasional sistem</span></div>
           <div class="sk"><span>Troubleshooting</span><span class="sk-note">pemecahan masalah</span></div>
         </div>
@@ -205,7 +221,7 @@
       <h2 class="reveal">Kontak</h2>
       <p class="plabel reveal">Ajak ngobrol soal <span class="muted">// x ∈ T</span></p>
       <div class="pchips reveal">
-        <span>web development</span><span>desain antarmuka</span><span>LMS &amp; Moodle</span><span>matematika</span><span>AI</span>
+        <span>web development</span><span>desain antarmuka</span><span>LMS &amp; Moodle</span><span>computer vision</span><span>matematika</span><span>AI</span>
       </div>
       <dl class="contact reveal">
         <div><dt>email</dt><dd><a href="mailto:iarf.edu@gmail.com">iarf.edu@gmail.com</a></dd></div>
